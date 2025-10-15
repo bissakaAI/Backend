@@ -21,6 +21,13 @@ class BaseAPI(BaseHTTPRequestHandler):
         for i in data:
             if i['name']== new_data['name']:
                 i.update(new_data) #like saving to a database
+                self.send_data({
+                'Message':'Data received',
+                'data': data
+            })
+        return
+
+
         
 def run():
     HTTPServer(('localhost',8000),BaseAPI).serve_forever()
