@@ -27,6 +27,5 @@ class BaseAPI(BaseHTTPRequestHandler):
 def run():
     HTTPServer(('localhost',8000),BaseAPI).serve_forever()
 
-
 print('Application is running')
 run()
