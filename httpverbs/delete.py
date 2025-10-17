@@ -32,3 +32,21 @@ def run():
 
 print('Application is running')
 run()
+
+
+
+
+
+
+#this is a post request
+@app.post("/posts")
+def get_posts(payload:Post): # do post function to extract the body from the request and saving it in a dic
+    print(payload)
+    return {'newdata':f' the {payload} man'}
+
+
+#this is a post request
+@app.post("/posts")
+def get_posts(payload:dict=Body(...)): # do post function to extract the body from the request and saving it in a dic
+    print(payload)
+    return {'newdata':f'details {payload} saved successfully'}
