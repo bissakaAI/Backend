@@ -19,7 +19,7 @@ def new_posts(payload:Post): # do post function to extract the body from the req
     print(payload.name)
     return {'newdata':f' the {payload} man'}
 
-
+#
 
 # this is a code for delete using httpexceptions
 # @app.delete("/delete/{id}")
