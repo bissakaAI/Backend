@@ -11,33 +11,6 @@ engine = create_engine(db_url,connect_args={"client_flag":CLIENT.MULTI_STATEMENT
 session=sessionmaker(bind=engine)
 db=session()
 
-<<<<<<< HEAD
-# query= text("SELECT * FROM user")
-# userd=db.execute(query).fetchall()
-# print(userd)
- 
-create_tables_query = text("""
-CREATE TABLE IF NOT EXISTS users(id INT AUTO_INCREMENT PRIMARY KEY,
-                                name VARCHAR(100) NOT NULL,
-                           email VARCHAR(100) NOT NULL,
-                           password VARCHAR(20) NOT NULL);
-
-
-CREATE TABLE IF NOT EXISTS courses(id INT AUTO_INCREMENT PRIMARY KEY,
-                           title VARCHAR(100) NOT NULL,
-                           level VARCHAR(100) NOT NULL);
-                        
-CREATE TABLE IF NOT EXISTS enrollments(id INT AUTO_INCREMENT PRIMARY KEY,
-                           userid INT,
-                           courseid INT,
-                           FOREIGN KEY(userid) REFERENCES users(id),
-                           FOREIGN KEY(courseid) REFERENCES courses(id));
-""")
-
-databseusercourses=db.execute(create_tables_query)
-# i removed the fetchall() because the sql query doesnt have anything to return it is not a query that returns something so its going to throw an error 
-print(databseusercourses)
-=======
 query= text("SELECT * FROM user")
 userd=db.execute(query).fetchall()
 print(userd)
@@ -100,4 +73,3 @@ create_tables_query =
     
 # if __name__=="__main__":
 #     uvicorn.run(app,host=os.getenv("host"), port=int(os.getenv("port")))
->>>>>>> 9074a65600479179af92be58e1de0128158a3753
