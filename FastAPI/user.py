@@ -18,7 +18,7 @@ class Users(BaseModel):
     email: str =Field(...,example= "adewale@gmail.com")
     password: str =Field(...,pattern=r'^[A-Za-z0-9@_]+$')
 # i want to create a signup endpoint 
-# since users will be signing up te end point only needs to post 
+# since users will be signing up the end point only needs to post 
 @app.post("/signup") # a signup field wil be needing something to validate inputs so i create a class/model for that
 def signup(input:Users):
     # duplicate_query = text("""SELECT * FROM users WHERE email= :email""")
@@ -29,7 +29,7 @@ def signup(input:Users):
                     """)
         db.execute(query,{"name":input.name,"email":input.email,"password":input.password})
         db.commit()
-        return {"message":"user created successfully","Data":{"name":input.name,"email":input.email}}
+        return {"message":"user created successfully","Data":{"your name is name":input.name,"\nyor email is email":input.email}}
     except Exception as e:
         raise HTTPException(status_code=500,detail=str(e))
     
@@ -48,7 +48,7 @@ def login(input:loginrequest):
         if not result:
             raise HTTPException(status_code=401,detail="invalid email or password")
         verified_password= result[3]
-        if input.email != verified_password:
+        if input.password != verified_password:
             raise HTTPException(status_code=401,detail="invalid email or password")
         return {"message":"login sucessful"}
     except Exception as e:

@@ -37,9 +37,6 @@ def create_data(anyname:Item):
     return {"message": "Data Received", "Data": data}
 
 
-#now lets do an edith or patch 
-# for patch we need to allow the other fields to be optional so we create a new class 
-
 @app.put("/update-data/{id}") #{id}  is a path paraam
 def update_data(id: int, req: Item):
     data[id].update(req.model_dump())
@@ -59,6 +56,8 @@ def remove_data(id:int,req:Item):
         return {"message": "Data not found"}
 
 
+#now lets do an edith or patch 
+# for patch we need to allow the other fields to be optional so we create a new class 
 
 # Implement an API endpoint to update (PATCH) a specific value in the DATA variable.
 #since it is a patch request i need to have the id of the existing post i want to patch 
