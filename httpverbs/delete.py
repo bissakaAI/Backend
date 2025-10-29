@@ -25,7 +25,7 @@ class BaseAPI(BaseHTTPRequestHandler):
             'Message':'Data removed',
             'data': data
         }, status=200)
-        return
+        return 
 def run():
     HTTPServer(('localhost',8000),BaseAPI).serve_forever()
 

@@ -11,7 +11,6 @@ engine = create_engine(db_url,connect_args={"client_flag":CLIENT.MULTI_STATEMENT
 session=sessionmaker(bind=engine)
 db=session()
 
-
 # query= text("SELECT * FROM user")
 # userd=db.execute(query).fetchall()
 # print(userd)
@@ -37,9 +36,3 @@ CREATE TABLE IF NOT EXISTS enrollments(id INT AUTO_INCREMENT PRIMARY KEY,
 databseusercourses=db.execute(create_tables_query)
 # i removed the fetchall() because the sql query doesnt have anything to return it is not a query that returns something so its going to throw an error 
 print(databseusercourses)
-
-
-
-
-    
-
