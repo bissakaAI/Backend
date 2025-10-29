@@ -53,7 +53,22 @@ def login(input:loginrequest):
         return {"message":"login sucessful"}
     except Exception as e:
         raise HTTPException(status_code=500,detail=str(e))
+
+# to add courses
+class courses(BaseModel):
+    title: str = Field(...,examples='chm101')
+    level: int = Field(...,examples=400)
     
+@app.post("/add-course")
+def adcourses(input:courses):
+    try:
+        query = ("""INSERT INTO courses (title,level) VALUES(:title,:level)""")
+
+        result=db.execute(query,{'title':input.title,'level':input.level})
+        db.commit
+        return {'message': result}
+    except Exception as e:
+        raise HTTPException(status_code=500,detail=str(e))
 # for uthorization we would be needing a jwt so we will be installing pyJWT
 # we also want anything that deals with token creation to be in a seperate
 # for token generation we will need a secret key user details and expiration
